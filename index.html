@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f5f1" />
+    <meta name="description" content="A personal portfolio workspace." />
+    <title>Abdulkadir Jaerison Bravo Kaharudin — Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              canvas: '#f4f5f1',
+              ink: '#202522',
+              muted: '#747b75',
+              line: '#e4e8e1',
+              accent: '#416c56',
+              citrus: '#dce9a8',
+            },
+            fontFamily: {
+              sans: ['DM Sans', 'sans-serif'],
+              display: ['Manrope', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div class="app-shell w-full h-screen overflow-hidden">
+      <aside class="sidebar fixed inset-y-0 left-0 z-20 flex flex-col border-r" id="sidebar" aria-label="Portfolio sidebar">
+        <a class="brand" href="#overview" aria-label="Portfolio overview" data-route="overview">
+          <span class="brand-mark brand-monogram">AJ</span>
+          <span class="brand-label">PORTFOLIO</span>
+        </a>
+
+        <section class="profile-block" aria-label="Profile">
+          <div class="avatar" aria-hidden="true"><img src="images/2x2_ID.png" alt="" /></div>
+          <div class="profile-copy">
+            <p class="profile-name" title="Abdulkadir Jaerison Bravo Kaharudin">AJ</p>
+            <p class="profile-role">Marketing Automation</p>
+          </div>
+          <span class="availability-dot" title="Open to employment opportunities"></span>
+        </section>
+
+        <p class="nav-caption">WORKSPACE</p>
+        <nav class="primary-nav" aria-label="Main navigation">
+          <button class="nav-item is-active" data-view="overview" aria-current="page"><i data-lucide="layout-dashboard"></i><span>Overview</span><span class="nav-indicator"></span></button>
+          <button class="nav-item" data-view="about"><i data-lucide="user-round"></i><span>About me</span><span class="nav-indicator"></span></button>
+          <button class="nav-item" data-view="projects"><i data-lucide="briefcase-business"></i><span>Projects</span><span class="nav-count">04</span></button>
+          <button class="nav-item" data-view="skills"><i data-lucide="shapes"></i><span>Skills &amp; tech</span><span class="nav-indicator"></span></button>
+          <button class="nav-item" data-view="experience"><i data-lucide="history"></i><span>Experience</span><span class="nav-indicator"></span></button>
+          <button class="nav-item" data-view="contact"><i data-lucide="send"></i><span>Contact</span><span class="nav-indicator"></span></button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="sidebar-note">
+            <span class="note-icon"><i data-lucide="layers-2"></i></span>
+            <div><span class="note-title">Core focus</span><span class="note-copy">Automation · CMS<br />Front-end · QA</span></div>
+          </div>
+          <div class="sidebar-links">
+            <span>SOCIAL</span>
+            <div class="social-links">
+              <a href="https://www.linkedin.com/in/abdulkadir-jaerison-kaharudin-8556b410a" target="_blank" rel="noreferrer" aria-label="LinkedIn profile"><span class="social-glyph">in</span></a>
+              <a href="https://www.facebook.com/tearablename/" target="_blank" rel="noreferrer" aria-label="Facebook profile"><span class="social-glyph">f</span></a>
+              <button class="theme-toggle" type="button" aria-label="Switch to dark theme" title="Toggle theme"><i data-lucide="moon"></i></button>
+            </div>
+          </div>
+          <p class="sidebar-version">PERSONAL PORTFOLIO <span>·</span> <span id="current-year"></span></p>
+        </div>
+      </aside>
+
+      <main class="main-area flex h-full min-w-0 flex-col">
+        <header class="topbar flex items-center justify-between border-b">
+          <div class="mobile-brand"><span class="brand-mark brand-monogram">AJ</span><span class="mobile-brand-label">PORTFOLIO</span></div>
+          <div class="breadcrumbs"><span>Workspace</span><i data-lucide="chevron-right"></i><strong id="crumb-current">Overview</strong></div>
+          <div class="topbar-actions">
+            <span class="date-chip"><i data-lucide="calendar-days"></i><span id="today-label">Today</span></span>
+            <button class="mobile-menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><i data-lucide="menu"></i></button>
+            <button class="top-contact" type="button" data-go="contact"><span>Let’s talk</span><i data-lucide="arrow-up-right"></i></button>
+          </div>
+        </header>
+
+        <div class="view-viewport flex-1 min-h-0" id="view-viewport" tabindex="-1">
+          <section class="view is-visible" id="view-overview" data-title="Overview" aria-labelledby="overview-title">
+            <div class="view-heading overview-heading">
+              <div><p class="eyebrow"><span class="eyebrow-line"></span> PROFESSIONAL PROFILE</p><h1 id="overview-title">Marketing automation, <span>content &amp; front-end.</span></h1><p class="heading-subtitle">Digital campaigns, content operations, and user-focused web experiences.</p></div>
+              <span class="heading-date"><span class="availability-dot"></span> OPEN TO EMPLOYMENT OPPORTUNITIES</span>
+            </div>
+
+            <div class="overview-grid">
+              <article class="panel intro-panel">
+                <div class="intro-top"><span class="panel-kicker">A QUICK INTRODUCTION</span><span class="tiny-mark">01 / 06</span></div>
+                <h2>Abdulkadir Jaerison Bravo Kaharudin,<br /><span class="highlight-word">front-end developer</span><br />for digital platforms.</h2>
+                <p class="intro-copy">I build and support campaign assets, digital content, and user-focused web experiences with cross-functional teams.</p>
+                <button class="text-link" data-go="about">A little more about me <i data-lucide="arrow-right"></i></button>
+                <div class="intro-decoration" aria-hidden="true"><span></span><span></span><span></span></div>
+              </article>
+
+              <article class="panel featured-panel">
+                <div class="featured-image" role="img" aria-label="A close-up of a laptop on a workspace"></div>
+                <div class="featured-overlay"></div>
+                <div class="featured-content"><span class="feature-label"><i data-lucide="star"></i> FEATURED PROJECT</span><div><p class="featured-title">Vertiv<br />AI Hub</p><p class="featured-description">Five live production pages.</p></div><a class="feature-open" href="https://www.vertiv.com/en-us/solutions/ai-hub/" target="_blank" rel="noreferrer" aria-label="Open Vertiv AI Hub project"><i data-lucide="arrow-up-right"></i></a></div>
+                <span class="image-credit">PUBLIC LINK</span>
+              </article>
+
+              <article class="panel metrics-panel">
+                <div class="metric-head"><span class="panel-kicker">AT A GLANCE</span><i data-lucide="move-up-right"></i></div>
+                <div class="metrics-list">
+                  <div class="metric-row"><span class="metric-number">11</span><span class="metric-label">Production pages</span><i data-lucide="panels-top-left"></i></div>
+                  <div class="metric-row"><span class="metric-number">7<span class="metric-plus">+</span></span><span class="metric-label">Years of experience</span><i data-lucide="calendar-check-2"></i></div>
+                  <div class="metric-row"><span class="metric-number">03</span><span class="metric-label">Organizations</span><i data-lucide="building-2"></i></div>
+                </div>
+                <p class="metrics-footnote">Career history: Emerson, Vertiv, and Accenture.</p>
+              </article>
+
+              <article class="panel focus-panel">
+                <div class="panel-heading"><div><span class="panel-kicker">PROFESSIONAL FOCUS</span><h3>Areas of experience</h3></div><span class="round-icon"><i data-lucide="scan-line"></i></span></div>
+                <div class="focus-items"><span class="focus-tag"><i data-lucide="workflow"></i> Marketing automation</span><span class="focus-tag"><i data-lucide="panels-top-left"></i> CMS</span><span class="focus-tag"><i data-lucide="code-2"></i> Front-end</span></div>
+                <button class="text-link" data-go="skills">Explore my toolkit <i data-lucide="arrow-right"></i></button>
+              </article>
+
+              <article class="panel recent-panel">
+                <div class="panel-heading"><div><span class="panel-kicker">PUBLIC REFERENCES</span><h3>Links listed on my CV</h3></div><button class="icon-button" data-go="projects" aria-label="View portfolio references"><i data-lucide="arrow-up-right"></i></button></div>
+                <div class="recent-items">
+                  <button class="recent-item" data-go="projects"><span class="project-swatch swatch-lime"><i data-lucide="cpu"></i></span><span class="recent-copy"><strong>Vertiv AI Hub</strong><small>Five production pages</small></span><span class="recent-arrow"><i data-lucide="arrow-up-right"></i></span></button>
+                  <button class="recent-item" data-go="projects"><span class="project-swatch swatch-coral"><i data-lucide="workflow"></i></span><span class="recent-copy"><strong>Vertiv 360AI</strong><small>Production page</small></span><span class="recent-arrow"><i data-lucide="arrow-up-right"></i></span></button>
+                </div>
+              </article>
+            </div>
+            <footer class="view-footer"><span>ABDULKADIR JAERISON BRAVO KAHARUDIN <span class="footer-star">✳</span></span><span>QUEZON CITY, PHILIPPINES</span></footer>
+          </section>
+
+          <section class="view" id="view-about" data-title="About me" aria-labelledby="about-title" hidden>
+            <div class="view-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> THE PERSON BEHIND THE WORK</p><h1 id="about-title">A bit of <span>context.</span></h1><p class="heading-subtitle">The short version of my story, in my own words.</p></div></div>
+            <div class="subpage-grid about-grid">
+              <article class="panel about-story"><span class="panel-kicker">PROFESSIONAL SUMMARY</span><h2>Abdulkadir Jaerison Bravo Kaharudin</h2><p>Front-end web developer and content/campaign management professional with experience building, optimizing, and maintaining user-focused digital platforms. Skilled in HTML, CSS, JavaScript, CMS administration (Optimizely/EpiServer, WordPress), and marketing automation/campaign management (Eloqua, Salesforce Pardot).</p><p>Experienced in improving user experience, streamlining content and email marketing workflows, and supporting cross-functional SEO, UI/UX, and marketing teams. Background includes quality assurance, training and development, and client support, delivering reliable solutions that drive engagement and efficiency.</p><div class="about-signoff"><span class="avatar avatar-small">AK</span><span><strong>Quezon City, Philippines</strong><small>Front-End Web Developer</small></span></div></article>
+              <div class="about-side"><article class="panel values-panel"><span class="panel-kicker">AREAS OF EXPERIENCE</span><div class="value-row"><span>01</span><div><strong>Front-end &amp; CMS</strong><p>Platform content, layouts, and code snippets.</p></div><i data-lucide="move-up-right"></i></div><div class="value-row"><span>02</span><div><strong>Campaign delivery</strong><p>Eloqua, Pardot, email, and landing pages.</p></div><i data-lucide="move-up-right"></i></div><div class="value-row"><span>03</span><div><strong>Training &amp; support</strong><p>Instruction, LMS administration, and client support.</p></div><i data-lucide="move-up-right"></i></div></article><article class="panel about-quote"><i data-lucide="quote"></i><blockquote>“Building, optimizing, and maintaining user-focused digital platforms.”</blockquote><span>PROFESSIONAL SUMMARY</span></article></div>
+            </div>
+            <footer class="view-footer"><span>ABOUT <span class="footer-star">✳</span></span><button class="footer-action" data-go="contact">Start a conversation <i data-lucide="arrow-up-right"></i></button></footer>
+          </section>
+
+          <section class="view" id="view-projects" data-title="Projects" aria-labelledby="projects-title" hidden>
+            <div class="view-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> SELECTED LIVE PAGES</p><h1 id="projects-title">Production <span>projects.</span></h1><p class="heading-subtitle">11 live pages built with a front-end page builder; monthly content cadence and QA.</p></div><span class="project-total"><strong>11</strong> LIVE PAGES</span></div>
+            <div class="projects-grid">
+              <article class="panel project-card"><div class="project-image project-image-one" role="img" aria-label="Workspace with laptop and notebook"></div><div class="project-card-body"><div class="project-card-top"><span class="project-index">01 / EXPERIENCE</span><span class="project-type">5 LIVE PAGES</span></div><h2>Vertiv AI Hub</h2><p>AI Hub page set built into live production pages.</p><div class="project-links"><a class="project-route" href="https://www.vertiv.com/en-us/solutions/ai-hub/" target="_blank" rel="noreferrer">AI Hub <i data-lucide="arrow-up-right"></i></a><a class="project-route" href="https://www.vertiv.com/en-us/solutions/ai-hub/discover/" target="_blank" rel="noreferrer">Discover <i data-lucide="arrow-up-right"></i></a><a class="project-route" href="https://www.vertiv.com/en-us/solutions/ai-hub/design/" target="_blank" rel="noreferrer">Design <i data-lucide="arrow-up-right"></i></a><a class="project-route" href="https://www.vertiv.com/en-us/solutions/ai-hub/ai-solutions/" target="_blank" rel="noreferrer">AI solutions <i data-lucide="arrow-up-right"></i></a><a class="project-route" href="https://www.vertiv.com/en-us/solutions/ai-hub/experience/" target="_blank" rel="noreferrer">Experience <i data-lucide="arrow-up-right"></i></a></div></div></article>
+              <article class="panel project-card"><div class="project-image project-image-two" role="img" aria-label="Digital product workspace"></div><div class="project-card-body"><div class="project-card-top"><span class="project-index">02 / CAMPAIGN PAGE</span><span class="project-type">VERTIV.COM</span></div><h2>Vertiv 360AI</h2><p>Page built for the Vertiv 360AI solution.</p><div class="project-links"><a class="project-route" href="https://www.vertiv.com/en-us/solutions/360ai/" target="_blank" rel="noreferrer">Open 360AI <i data-lucide="arrow-up-right"></i></a></div></div></article>
+              <article class="panel project-card"><div class="project-image project-image-three" role="img" aria-label="Modern corporate architecture"></div><div class="project-card-body"><div class="project-card-top"><span class="project-index">03 / CORPORATE PAGES</span><span class="project-type">VERTIV.COM</span></div><h2>About &amp; Careers</h2><p>Corporate information and career pages built for production.</p><div class="project-links"><a class="project-route" href="https://www.vertiv.com/en-us/about/about-us/" target="_blank" rel="noreferrer">About us <i data-lucide="arrow-up-right"></i></a><a class="project-route" href="https://www.vertiv.com/en-us/about/career-center/" target="_blank" rel="noreferrer">Career center <i data-lucide="arrow-up-right"></i></a><a class="project-route reference-only" href="https://www.vertiv.com/en-us/" target="_blank" rel="noreferrer">Corporate home · CV reference <i data-lucide="arrow-up-right"></i></a></div></div></article>
+              <article class="panel project-card"><div class="project-image project-image-one" role="img" aria-label="Workspace with laptop and notebook"></div><div class="project-card-body"><div class="project-card-top"><span class="project-index">04 / INDUSTRY PAGES</span><span class="project-type">VERTIV.COM</span></div><h2>Vertiv industries</h2><p>Industry pages built into the production site.</p><div class="project-links"><a class="project-route" href="https://www.vertiv.com/en-us/solutions/hyperscale-and-cloud/" target="_blank" rel="noreferrer">Hyperscale &amp; cloud <i data-lucide="arrow-up-right"></i></a><a class="project-route" href="https://www.vertiv.com/en-us/solutions/logistics/" target="_blank" rel="noreferrer">Logistics <i data-lucide="arrow-up-right"></i></a><a class="project-route" href="https://www.vertiv.com/en-us/solutions/healthcare/" target="_blank" rel="noreferrer">Healthcare <i data-lucide="arrow-up-right"></i></a></div></div></article>
+            </div>
+            <footer class="view-footer"><span>PAGE BUILDER · CONTENT CADENCE · QA <span class="footer-star">✳</span></span><span>IMAGES, VIDEO &amp; CEROS BY A DIFFERENT TEAM</span></footer>
+          </section>
+
+          <section class="view" id="view-skills" data-title="Skills & tech" aria-labelledby="skills-title" hidden>
+            <div class="view-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> CORE SKILLS</p><h1 id="skills-title">Tools &amp; <span>expertise.</span></h1><p class="heading-subtitle">Technical, campaign, QA, and client-facing experience from my CV.</p></div></div>
+            <div class="skills-grid">
+              <article class="panel skill-group"><div class="skill-group-head"><span class="skill-icon icon-green"><i data-lucide="panels-top-left"></i></span><div><span class="panel-kicker">01 / DEVELOPMENT</span><h2>Front-end</h2></div></div><p>Languages, frameworks, and web technologies.</p><div class="skill-pills"><span>HTML5</span><span>CSS</span><span>JavaScript</span><span>Bootstrap</span><span>ReactJS</span><span>NodeJS</span><span>Python</span><span>Tailwind CSS</span><span>TypeScript</span><button class="add-skill" aria-label="Add a front-end skill" data-skill-group="Frontend"><i data-lucide="plus"></i></button></div></article>
+              <article class="panel skill-group"><div class="skill-group-head"><span class="skill-icon icon-yellow"><i data-lucide="panels-top-left"></i></span><div><span class="panel-kicker">02 / CONTENT &amp; CAMPAIGNS</span><h2>Platforms</h2></div></div><p>CMS administration, email campaigns, and digital assets.</p><div class="skill-pills"><span>Optimizely / EpiServer CMS</span><span>WordPress</span><span>Oracle Eloqua</span><span>Email builds</span><span>Landing pages</span><span>Segmentation</span><span>Forms</span><span>Salesforce Pardot</span><span>AMP Scripting</span><span>OpenText DAM</span><span>Oracle DAM</span><button class="add-skill" aria-label="Add a platform skill" data-skill-group="Platforms"><i data-lucide="plus"></i></button></div></article>
+              <article class="panel skill-group"><div class="skill-group-head"><span class="skill-icon icon-blue"><i data-lucide="clipboard-check"></i></span><div><span class="panel-kicker">03 / QUALITY &amp; DELIVERY</span><h2>Tools &amp; practice</h2></div></div><p>Design, analytics, testing, training, and client support.</p><div class="skill-pills"><span>GA4</span><span>Figma</span><span>Photoshop</span><span>Photopea</span><span>JIRA</span><span>Wrike</span><span>Functional testing</span><span>UAT</span><span>Mobile testing</span><span>Content management</span><span>Quality assurance</span><span>Training &amp; development</span><span>Client support</span><button class="add-skill" aria-label="Add a delivery skill" data-skill-group="Delivery"><i data-lucide="plus"></i></button></div></article>
+              <article class="panel skill-note"><span class="note-spark"><i data-lucide="graduation-cap"></i></span><span class="panel-kicker">EDUCATION &amp; LANGUAGES</span><h3>Bachelor of Science<br />in Information Technology</h3><p>STI Novaliches · 2012–2016</p><div class="skill-note-languages"><strong>English</strong> Proficient <span>·</span> <strong>Tagalog</strong> Native</div></article>
+            </div>
+            <footer class="view-footer"><span>CORE SKILLS <span class="footer-star">✳</span></span><span>TECHNICAL · CAMPAIGN · QA</span></footer>
+          </section>
+
+          <section class="view" id="view-experience" data-title="Experience" aria-labelledby="experience-title" hidden>
+            <div class="view-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> PROFESSIONAL EXPERIENCE</p><h1 id="experience-title">Work &amp; <span>experience.</span></h1><p class="heading-subtitle">Current marketing automation role and prior work across Vertiv and Accenture.</p></div><span class="project-total"><strong>03</strong> ORGANIZATIONS</span></div>
+            <div class="experience-layout"><article class="panel timeline-panel"><div class="timeline-head"><span class="panel-kicker">ROLE HISTORY</span><span class="timeline-status">AUG 2026 — AUG 2027</span></div>
+              <div class="timeline-entry"><span class="timeline-pin"></span><div class="timeline-meta"><span>AUG 2026 — AUG 2027</span><span>EMERSON PHILIPPINES</span></div><h2>Marketing Automation Specialist II</h2><p class="timeline-company">Emerson Philippines</p><p class="role-disclaimer">Non-binding fixed-term arrangement, scheduled to end August 2027. Open to employment opportunities.</p><ul class="experience-bullets"><li>Build digital assets including emails, landing-page forms, and segments using standard marketing automation templates.</li><li>Set up, analyze, and complete campaign workflows, including integrations with applications such as Oracle Sales Cloud.</li><li>Perform QA and audits of emails, landing pages, forms, campaign canvases, and segments; analyze results and recommend improvements for guideline and standards compliance.</li><li>Schedule campaigns for activation and document marketing automation processes, programs, and procedures.</li><li>Review and approve complex designs and templates for digital assets.</li><li>Provide technical and marketing automation platform support; troubleshoot through debugging, functional analysis, and testing.</li><li>Research, test, and implement third-party integrations with Eloqua; configure and extract reports in Eloqua Insights and Dashboard.</li></ul></div>
+              <div class="timeline-entry"><span class="timeline-pin"></span><div class="timeline-meta"><span>NOV 2023 — APR 2026</span><span>VERTIV</span></div><h2>Content and Graphics Design Senior Analyst</h2><p class="timeline-company">Vertiv</p><ul class="experience-bullets"><li>Administered Optimizely/EpiServer CMS and created or optimized front-end code snippets to improve user experience and engagement.</li><li>Managed content layouts and updates across web platforms, maintaining alignment with brand guidelines.</li><li>Collaborated with SEO and UI/UX teams on page optimization using Figma, Photoshop, Photopea, and Google Analytics 4.</li><li>Used Wrike for project management and JIRA for ticketing and QA, including functional, UAT, and mobile testing.</li><li>Maintained digital assets in OpenText DAM and Oracle DAM; reviewed website content cadence for consistency and relevance.</li></ul></div>
+              <div class="timeline-entry last-entry"><span class="timeline-pin pin-muted"></span><div class="timeline-meta"><span>FEB 2017 — MAY 2022</span><span>ACCENTURE</span></div><h2>Web Developer New Associate / Instructor New Associate / Transaction Processing New Associate</h2><p class="timeline-company">Accenture</p><ul class="experience-bullets"><li>Built and managed multi-channel campaigns in client-approved Oracle Eloqua tools, including email builds, landing pages, audience segmentation, and forms; created Salesforce Pardot campaigns using AMP Scripting and tested across devices and platforms.</li><li>Validated client requirements against project objectives and business needs through discovery calls and document/asset management; reviewed client HTML designs with Figma and Photoshop for accuracy and implementation.</li><li>Managed personalized email campaigns, promotional offers, and newsletters to support engagement and marketing objectives.</li><li>Delivered training and assessments; guided teams on course content and duration for different audiences, gave courseware feedback, managed LMS content and administration, and contributed to process improvement and quality reviews.</li><li>Processed health-insurance information and account setup, maintenance, renewals, and modifications using client applications; extracted and validated data from PDFs, Excel, and Word for accuracy and compliance.</li><li>Supported client inquiries through email, chat, and client platforms; clarified source data, created account structures tailored to client needs, and recommended workflow improvements.</li></ul></div></article><aside class="experience-aside"><article class="panel experience-note"><span class="round-icon"><i data-lucide="calendar-days"></i></span><span class="panel-kicker">CAREER SPAN</span><h3>7+ years of<br /><span>experience.</span></h3><p>Front-end development, CMS and campaign operations, training, QA, and client support.</p></article><article class="experience-cta"><div><span class="panel-kicker">PORTFOLIO</span><p>Two public references</p></div><button data-go="projects" aria-label="View portfolio references"><i data-lucide="arrow-up-right"></i></button></article></aside></div>
+            <footer class="view-footer"><span>EXPERIENCE <span class="footer-star">✳</span></span><span>EMERSON · VERTIV · ACCENTURE</span></footer>
+          </section>
+
+          <section class="view" id="view-contact" data-title="Contact" aria-labelledby="contact-title" hidden>
+            <div class="view-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> CONTACT DETAILS</p><h1 id="contact-title">Let’s <span>connect.</span></h1><p class="heading-subtitle">Phone, email, location, and portfolio references.</p></div></div>
+            <div class="contact-grid"><article class="panel contact-main"><span class="panel-kicker">CONTACT DETAILS</span><h2>Get in <span>touch.</span></h2><p>Based in Quezon City, Philippines. Reach me by phone or email.</p><a class="email-link" href="tel:+639176570526"><span class="email-icon"><i data-lucide="phone"></i></span><span><small>PHONE</small><strong>+63 917 657 0526</strong></span><i class="email-arrow" data-lucide="arrow-up-right"></i></a><a class="email-link" href="mailto:ajbravo.kaharudin@gmail.com"><span class="email-icon"><i data-lucide="mail"></i></span><span><small>EMAIL</small><strong>ajbravo.kaharudin@gmail.com</strong></span><i class="email-arrow" data-lucide="arrow-up-right"></i></a><a class="email-link" href="mailto:akjaerisonbravo.kaharudin@gmail.com"><span class="email-icon"><i data-lucide="mail"></i></span><span><small>EMAIL</small><strong>akjaerisonbravo.kaharudin@gmail.com</strong></span><i class="email-arrow" data-lucide="arrow-up-right"></i></a><a class="cv-request-link" href="mailto:ajbravo.kaharudin@gmail.com?subject=Request%20for%20CV%20or%20Resume&amp;body=Hi%20Abdulkadir%2C%0A%0AI%20would%20like%20to%20request%20a%20copy%20of%20your%20CV%20or%20resume.%0A"><i data-lucide="mail"></i><span>Request my CV / Resume</span><i data-lucide="arrow-up-right"></i></a></article><aside class="contact-side"><article class="panel connect-panel"><span class="panel-kicker">PORTFOLIO REFERENCES</span><a href="https://www.vertiv.com/en-us/" target="_blank" rel="noreferrer" class="connect-link"><span class="connect-icon"><span class="social-glyph">V</span></span><span><strong>Vertiv corporate site</strong><small>Public reference from my CV</small></span><i data-lucide="arrow-up-right"></i></a><a href="https://www.vertiv.com/en-us/solutions/ai-hub" target="_blank" rel="noreferrer" class="connect-link"><span class="connect-icon"><span class="social-glyph">AI</span></span><span><strong>Vertiv AI Hub</strong><small>Public reference from my CV</small></span><i data-lucide="arrow-up-right"></i></a></article><article class="panel connect-panel"><span class="panel-kicker">SOCIAL PROFILES</span><a href="https://www.linkedin.com/in/abdulkadir-jaerison-kaharudin-8556b410a" target="_blank" rel="noreferrer" class="connect-link"><span class="connect-icon"><span class="social-glyph">in</span></span><span><strong>LinkedIn</strong><small>Connect with me</small></span><i data-lucide="arrow-up-right"></i></a><a href="https://www.facebook.com/tearablename/" target="_blank" rel="noreferrer" class="connect-link"><span class="connect-icon"><span class="social-glyph">f</span></span><span><strong>Facebook</strong><small>Connect with me</small></span><i data-lucide="arrow-up-right"></i></a></article><article class="contact-bottom"><span class="contact-bottom-mark"><i data-lucide="asterisk"></i></span><p>Front-end development,<br />content, and campaigns.</p><span>ABDULKADIR JAERISON BRAVO KAHARUDIN</span></article></aside></div>
+            <footer class="view-footer"><span>CONTACT <span class="footer-star">✳</span></span><span>LOOKING FORWARD TO IT</span></footer>
+          </section>
+        </div>
+        <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+          <button data-view="overview" class="is-active" aria-label="Overview"><i data-lucide="layout-dashboard"></i><span>Home</span></button>
+          <button data-view="projects" aria-label="Projects"><i data-lucide="briefcase-business"></i><span>Work</span></button>
+          <button data-view="about" aria-label="About me"><i data-lucide="user-round"></i><span>About</span></button>
+          <button data-view="contact" aria-label="Contact"><i data-lucide="send"></i><span>Contact</span></button>
+        </nav>
+      </main>
+    </div>
+
+    <dialog class="skill-dialog" aria-labelledby="skill-dialog-title">
+      <form method="dialog" class="skill-dialog-form">
+        <button class="dialog-close skill-dialog-close" type="button" aria-label="Close skill form"><i data-lucide="x"></i></button>
+        <span class="panel-kicker" id="skill-dialog-group">ADD TO TOOLKIT</span>
+        <h2 id="skill-dialog-title">Add a skill</h2>
+        <label for="skill-name">Skill or tool</label>
+        <input id="skill-name" name="skill" maxlength="36" placeholder="e.g. TypeScript" required />
+        <div class="dialog-actions"><button class="outline-button" type="submit" value="cancel">Cancel</button><button class="top-contact" type="submit" value="add">Add skill</button></div>
+      </form>
+    </dialog>
+    <script src="script.js"></script>
+  </body>
+</html>
