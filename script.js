@@ -89,6 +89,7 @@ initializeVisitorBadge();
 
 function setTheme(isDark) {
   document.body.classList.toggle("dark-theme", isDark);
+  document.querySelector('meta[name="theme-color"]').content = isDark ? "#090b0d" : "#f0f2f3";
   themeToggle.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
   themeToggle.title = isDark ? "Switch to light theme" : "Switch to dark theme";
   themeToggle.innerHTML = `<i data-lucide="${isDark ? "sun" : "moon"}"></i>`;
