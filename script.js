@@ -11,9 +11,46 @@ const sidebar = document.querySelector("#sidebar");
 const viewport = document.querySelector("#view-viewport");
 const mobileMenuButton = document.querySelector(".mobile-menu-button");
 const themeToggle = document.querySelector(".theme-toggle");
+let activeView;
+let pendingGoatCounterPath;
+
+async function initializeVisitorBadge() {
+  const badge = document.querySelector("#visitor-count");
+  try {
+    const response = await fetch("https://aj-kaharudin.goatcounter.com/counter/TOTAL.json");
+    if (!response.ok) {
+      console.warn(`GoatCounter visitor count unavailable (HTTP ${response.status}). Enable the public visitor counter in GoatCounter site settings.`);
+      return;
+    }
+
+    const data = await response.json();
+    if (typeof data.count !== "string") {
+      console.warn("GoatCounter visitor count response did not include a count.");
+      return;
+    }
+
+    document.querySelector("#visitor-count-value").textContent = data.count;
+  } catch (error) {
+    console.warn("GoatCounter visitor count could not be loaded.", error);
+  }
+}
+
+function trackViewChange(viewName) {
+  if (activeView === undefined) {
+    activeView = viewName;
+    return;
+  }
+  if (activeView === viewName) return;
+
+  activeView = viewName;
+  const path = `/${viewName}`;
+  if (window.goatcounter?.count) window.goatcounter.count({ path });
+  else pendingGoatCounterPath = path;
+}
 
 function setActiveView(viewName, updateHistory = true) {
   if (!viewTitles[viewName]) return;
+  trackViewChange(viewName);
 
   document.querySelectorAll(".view").forEach((view) => {
     const isSelected = view.id === `view-${viewName}`;
@@ -42,6 +79,14 @@ function setActiveView(viewName, updateHistory = true) {
   if (updateHistory) history.replaceState(null, "", `#${viewName}`);
 }
 
+document.querySelector('script[data-goatcounter]')?.addEventListener("load", () => {
+  if (!pendingGoatCounterPath || !window.goatcounter?.count) return;
+  const path = pendingGoatCounterPath;
+  pendingGoatCounterPath = undefined;
+  window.goatcounter.count({ path });
+});
+initializeVisitorBadge();
+
 function setTheme(isDark) {
   document.body.classList.toggle("dark-theme", isDark);
   themeToggle.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
@@ -49,7 +94,7 @@ function setTheme(isDark) {
   themeToggle.innerHTML = `<i data-lucide="${isDark ? "sun" : "moon"}"></i>`;
   if (window.lucide) window.lucide.createIcons();
   try {
-    localStorage.setItem("portfolio-theme", isDark ? "dark" : "light");
+    localStorage.setItem("portfolio-theme-v2", isDark ? "dark" : "light");
   } catch {
     // The theme still works for this visit when storage is unavailable.
   }
@@ -60,11 +105,6 @@ document.querySelectorAll("[data-view], [data-go]").forEach((control) => {
     const requestedView = control.dataset.view || control.dataset.go;
     setActiveView(requestedView);
   });
-});
-
-document.querySelector(".brand").addEventListener("click", (event) => {
-  event.preventDefault();
-  setActiveView("overview");
 });
 
 document.querySelector(".mobile-menu-button").addEventListener("click", () => {
@@ -86,89 +126,20 @@ themeToggle.addEventListener("click", () => {
   setTheme(!document.body.classList.contains("dark-theme"));
 });
 
-const skillDialog = document.querySelector(".skill-dialog");
-const skillForm = document.querySelector(".skill-dialog-form");
-const skillInput = document.querySelector("#skill-name");
-let activeSkillGroup;
-
-function saveSkills() {
-  const skills = {};
-  document.querySelectorAll(".add-skill").forEach((button) => {
-    const group = button.closest(".skill-group");
-    skills[button.dataset.skillGroup] = [...group.querySelectorAll(".skill-pills > span[data-user-skill]")]
-      .map((item) => item.textContent);
-  });
-
-  try {
-    localStorage.setItem("portfolio-skills", JSON.stringify(skills));
-  } catch {
-    // Skills remain in the page for this visit when storage is unavailable.
-  }
-}
-
-function addSkillPill(container, skill) {
-  const pill = document.createElement("span");
-  pill.textContent = skill;
-  pill.dataset.userSkill = "true";
-  container.insertBefore(pill, container.querySelector(".add-skill"));
-}
-
-document.querySelectorAll(".add-skill").forEach((button) => {
-  button.addEventListener("click", () => {
-    activeSkillGroup = button.closest(".skill-group");
-    document.querySelector("#skill-dialog-group").textContent = `ADD TO ${button.dataset.skillGroup.toUpperCase()}`;
-    skillInput.value = "";
-    skillDialog.showModal();
-    skillInput.focus();
-  });
-});
-
-skillForm.addEventListener("submit", (event) => {
-  if (event.submitter?.value !== "add") return;
-  event.preventDefault();
-  const skill = skillInput.value.trim();
-  if (!skill || !activeSkillGroup) return;
-
-  const container = activeSkillGroup.querySelector(".skill-pills");
-  container.querySelectorAll("[data-placeholder]").forEach((placeholder) => placeholder.remove());
-  addSkillPill(container, skill);
-  skillDialog.close();
-  saveSkills();
-});
-
-document.querySelector(".skill-dialog-close").addEventListener("click", () => skillDialog.close());
-
-try {
-  const savedSkills = JSON.parse(localStorage.getItem("portfolio-skills") || "{}");
-  document.querySelectorAll(".add-skill").forEach((button) => {
-    const skills = savedSkills[button.dataset.skillGroup];
-    if (!Array.isArray(skills) || skills.length === 0) return;
-    const container = button.closest(".skill-group").querySelector(".skill-pills");
-    container.querySelectorAll("[data-placeholder]").forEach((placeholder) => placeholder.remove());
-    const existingSkills = new Set([...container.querySelectorAll(":scope > span:not([data-user-skill])")]
-      .map((item) => item.textContent.trim().toLowerCase()));
-    skills.forEach((skill) => {
-      const normalizedSkill = String(skill).trim();
-      if (!normalizedSkill || existingSkills.has(normalizedSkill.toLowerCase())) return;
-      existingSkills.add(normalizedSkill.toLowerCase());
-      addSkillPill(container, normalizedSkill);
-    });
-  });
-} catch {
-  // Ignore malformed or unavailable local storage and keep the sample prompts.
-}
-
 document.querySelector("#today-label").textContent = new Intl.DateTimeFormat(undefined, {
   weekday: "short",
   month: "short",
   day: "numeric",
 }).format(new Date());
-document.querySelector("#current-year").textContent = new Date().getFullYear();
+document.querySelectorAll("[data-current-year]").forEach((element) => {
+  element.textContent = new Date().getFullYear();
+});
 
 try {
-  setTheme(localStorage.getItem("portfolio-theme") !== "light");
+  const savedTheme = localStorage.getItem("portfolio-theme-v2");
+  setTheme(savedTheme !== "light");
 } catch {
-  setTheme(false);
+  setTheme(true);
 }
 
 const initialView = window.location.hash.slice(1);
