@@ -1,8 +1,12 @@
 .cv-request-link { width: min(100%, 380px); min-height: 40px; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 16px; padding: 0 12px; border: 1px solid var(--accent); border-radius: 6px; background: var(--accent); color: #fffaf4; font-size: 10px; font-weight: 700; text-decoration: none; transition: background .18s, transform .18s; }
 .cv-request-link:hover { background: var(--accent-dark); transform: translateY(-1px); }
 .cv-request-link svg { width: 14px; height: 14px; }
+.cv-request-link-secondary { margin-top: 8px; border-color: var(--line); background: var(--surface); color: var(--ink); }
+.cv-request-link-secondary:hover { border-color: var(--accent); background: var(--surface-soft); }
 .dark-theme .cv-request-link { color: #281a11; }
 .dark-theme .cv-request-link:hover { background: #f0c494; }
+.dark-theme .cv-request-link-secondary { color: var(--ink); }
+.dark-theme .cv-request-link-secondary:hover { background: var(--surface-soft); }
 /* Tailwind's CDN build is used here for a no-build prototype. Move its tokens
    into a compiled Tailwind config before deploying this as a production site. */
 :root {
@@ -360,3 +364,5 @@ body.dark-theme { background: radial-gradient(circle at top, #171b1d 0%, var(--c
 .dark-theme .top-contact { background: #dfe7ee; color: #0b0d0f; }
 .dark-theme .top-contact:hover { background: #f4f8fb; }
 .dark-theme button:focus-visible, .dark-theme a:focus-visible { outline-color: #dfe7ee; }
+.dark-theme .cv-request-link-secondary { border-color: var(--line); background: var(--surface); color: var(--ink); }
+.dark-theme .cv-request-link-secondary:hover { background: var(--surface-soft); }
